@@ -6,6 +6,7 @@ Based on Atom's default light-theme, but with many UI modifications:
 
 - Square tabs
 - Find/Pallete animations
+- Close icon animations
 - GitHub-inspired Settings page
 - Sidebar subfolder highlighting on hover
 - Sidebar doesn't change colors on inactivity
