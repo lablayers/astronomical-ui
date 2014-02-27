@@ -1,9 +1,9 @@
 {
-  "name": "astronomical",
+  "name": "astronomical-ui",
   "theme": "ui",
   "version": "0.22.0.1",
-  "description": "Based on light-theme, with square tabs, animations, and many UI refinements.",
-  "repository": "https://github.com/lablayers/astronomical.git",
+  "description": "Based on the default light theme, with square tabs, animations, and many UI refinements.",
+  "repository": "https://github.com/lablayers/astronomical-ui.git",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
