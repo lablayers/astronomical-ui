@@ -142,29 +142,29 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
-    .selected:before {
+    .entry.selected:before {
       background: @background-color-selected;
     }
-    .selected.status-modified:before {
+    .entry.selected.status-modified:before {
       background: @text-color-modified;
     }
-    .selected.status-added:before {
+    .entry.selected.status-added:before {
       background: @text-color-added;
     }
-    .selected.status-renamed:before {
+    .entry.selected.status-renamed:before {
       background: @text-color-renamed;
     }
-    .selected.status-ignored:before {
+    .entry.selected.status-ignored:before {
       background: @text-color-ignored;
     }
-    .selected.status-removed:before {
+    .entry.selected.status-removed:before {
       background: @text-color-removed;
     }
 
-    .selected > .name,
-    .selected > .name:before,
-    .selected > .list-item > .name,
-    .selected > .list-item > .name:before {
+    .entry.selected > .name,
+    .entry.selected > .name:before,
+    .entry.selected > .list-item > .name,
+    .entry.selected > .list-item > .name:before {
       color: #fff !important;
       text-shadow: 0 1px rgba(50,50,50,.3);
     }
@@ -281,10 +281,19 @@ select {
 
     li {
       &.selected {
-        background-color: @text-color-info;
+        background-color: @text-color-info!important;
         color: white;
-        .secondary-line {
+        text-shadow: none!important;
+        .secondary-line, .primary-line {
           color: white;
+          background: none!important;
+
+        }
+        span {
+          background: none!important;
+        }
+        .key-binding {
+          color: black!important;
         }
       }
 

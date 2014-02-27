@@ -1,9 +1,21 @@
-# Atom Light UI theme
+# Astronomical UI theme
 
-Default light UI theme for Atom.
+Astronomical UI theme for Atom.
 
-This theme is installed by default with Atom and can be activated by going to
+Based on Atom's default light-theme, but with many UI modifications:
+
+- Square tabs
+- Find/Pallete animations
+- GitHub-inspired Settings page
+- Sidebar subfolder highlighting on hover
+- Sidebar doesn't change colors on inactivity
+- Textboxes without borders
+- And more!
+
+This can be activated by going to
 the _Themes_ section in the Settings view (`cmd-,`) and selecting it from the
 _UI Themes_ drop-down menu.
 
-![](https://f.cloud.github.com/assets/671378/2265022/bb148a20-9e7a-11e3-81c8-bf5965d48183.png)
+![](http://cl.ly/UBEA/Screen%20Shot%202014-02-27%20at%206.01.15%20PM.png)
+
+![](http://cl.ly/UAnK/Screen%20Shot%202014-02-27%20at%205.59.47%20PM.png)

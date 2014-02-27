@@ -4,7 +4,7 @@
 	font-size: @font-size;
 	background: @tree-view-background-color;
 
-	.selected:before {
+	.entry.selected:before {
 		background: #C1C1C1;
 	}
 }
@@ -18,14 +18,14 @@
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1),to(#d1d8e0));
 		background-image: -webkit-linear-gradient(top, #e8ecf1, #d1d8e0);
 
-		.selected:before {
+		.entry.selected:before {
 			background: @background-color-selected;
 		}
 
-		.selected > .name,
-		.selected > .name:before,
-		.selected > .list-item > .name,
-		.selected > .list-item > .name:before {
+		.entry.selected > .name,
+		.entry.selected > .name:before,
+		.entry.selected > .list-item > .name,
+		.entry.selected > .list-item > .name:before {
 			color: #fff !important;
 		}
 	}
