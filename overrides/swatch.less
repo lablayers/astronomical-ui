@@ -1,0 +1,322 @@
+@import "ui-variables";
+
+// Buttons
+.btn-background (@color, @hover-color, @selected-color, @border-color, @text-color, @text-color-hover) {
+  @border-shadow: inset 0 0 0 1px @border-color;
+  @active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  color: @text-color;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(@color, darken(@color, 8%));
+  box-shadow: @border-shadow;
+  box-shadow: 0 0 2px @border-shadow;
+  outline: 0px;
+  transition: all .1s ease-in-out;
+}
+
+.btn-variant (@color) {
+  @bg: darken(@color, 10%);
+  @hover: @color;
+  @selected: @color;
+  @border: fadeout(darken(@color, 20%), 50%);
+  .btn-background(@bg, @hover, @selected, @border, @text-color-selected, @text-color-selected);
+}
+
+
+// Tabs
+@tab-radius: 3px;
+@modified-icon-width: 8px;
+@tab-skew: 0deg;
+@tab-top-padding: 5px;
+@tab-bottom-border-height: 5px;
+@tab-border: 1px solid @tab-border-color;
+@tab-shadow: inset -1px -1px 1px rgba(0,0,0, .05), inset 0 1px #fcfcfc;
+
+.tab-bar {
+  height: @tab-height + @tab-top-padding + 5px;
+  background-image: -webkit-linear-gradient(top, @tab-bar-background-color, lighten(@tab-bar-background-color, 9%));
+  box-shadow: inset 0 -8px 8px -4px rgba(0, 0, 0, 0.15), inset 0 4px 4px -4px rgba(0,0,0,0.4);
+  padding: 0 10px;
+  .tab {
+    position: relative;
+    top: @tab-top-padding;
+    height: @tab-height;
+    line-height: @tab-height;
+    color: @text-color;
+    padding-left: 15px;
+    margin-left: 0px;
+    border-top-left-radius: @tab-radius;
+    border-top-right-radius: @tab-radius;
+    border-left: @tab-border;
+    border-right: @tab-border;
+    box-shadow: @tab-shadow;
+    transition: background .15s ease-in-out, width .15s ease-in-out;
+    -webkit-transform: skewX(0deg);
+
+    &, &:before {
+      background-image: -webkit-linear-gradient(top, @tab-background-color, darken(@tab-background-color, 6%));
+      border-top: @tab-border;
+    }
+
+    &:before {
+      display: none!important;
+    }
+
+    &:first-child {
+      padding-left: inherit!important;
+    }
+
+    .close-icon {
+      z-index: 3;
+      line-height: @tab-height;
+      -webkit-transform: skewX(-@tab-skew);
+      color: rgba(151, 151, 151, 0.8)!important;
+      text-shadow: 0 0 0 #000!important;
+      &:before {
+        transition: all .1s ease-in;
+        -webkit-transform-origin: center;
+        width: 8px;
+      }
+      &:hover {
+        &:before {
+          -webkit-transform: rotate(180deg);
+          color: @text-color-error;
+        }
+      }
+    }
+    &.modified:not(:hover) .close-icon {
+      top: @tab-height/2 - @modified-icon-width/2 + 1px;
+      right: 14px;
+      width: @modified-icon-width;
+      height: @modified-icon-width;
+      top: 10px;
+      right: 10px!important;
+      width: 8px;
+      height: 8px;
+    }
+    .title{
+      -webkit-transform: skewX(-@tab-skew);
+    }
+
+    &:first-child {
+      // margin-right: 15px!important;
+    }
+  }
+  .tab.active {
+    line-height: @tab-height;
+    color: @text-color-highlight;
+    background: @tab-background-color-active;
+    .title {
+      top: 0px;
+    }
+    &, &:before {
+      background: @tab-background-color-active;
+      height: @tab-height + 1px;
+      box-shadow: none;
+    }
+  }
+  .tab:hover {
+    color: @text-color-highlight;
+  }
+  .tab.active:hover .close-icon {
+    color: @text-color-highlight;
+  }
+  .placeholder {
+    height: @tab-height + @tab-top-padding + @tab-bottom-border-height;
+    &:after {
+      top: @tab-height + @tab-top-padding + @tab-bottom-border-height;
+    }
+  }
+}
+
+// Tree View, Prefs
+.tree-view, .config-menu {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e8ecf1),to(#d1d8e0));
+    background-image: -webkit-linear-gradient(top, #e8ecf1, #d1d8e0);
+    .entry:hover:before {
+      content: '';
+      background-color: #6aa5e9;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 25px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .selected:before {
+      background: @background-color-selected;
+    }
+    .selected.status-modified:before {
+      background: @text-color-modified;
+    }
+    .selected.status-added:before {
+      background: @text-color-added;
+    }
+    .selected.status-renamed:before {
+      background: @text-color-renamed;
+    }
+    .selected.status-ignored:before {
+      background: @text-color-ignored;
+    }
+    .selected.status-removed:before {
+      background: @text-color-removed;
+    }
+
+    .selected > .name,
+    .selected > .name:before,
+    .selected > .list-item > .name,
+    .selected > .list-item > .name:before {
+      color: #fff !important;
+      text-shadow: 0 1px rgba(50,50,50,.3);
+    }
+}
+
+// Prefs
+.settings-view .config-menu .nav > li.active > a {
+  background: @text-color-info;
+}
+.alert {
+  border-radius: 0px;
+  &.alert-info {
+    background: @text-color-info;
+    color: white;
+    border: none;
+  }
+}
+.form-control {
+  border: 1px solid;
+}
+select {
+  -webkit-appearance: none!important;
+}
+.settings-view .panels {
+  padding-left: 18px;
+  margin-bottom: 18px;
+}
+.section {
+  background: white;
+  border-radius: 4px;
+  overflow: auto;
+  border: 1px solid rgb(213, 213, 213);
+  margin-bottom: 18px;
+  .section-heading {
+    font-size: 20px;
+    background-image: linear-gradient(rgb(250, 250, 250), rgb(234, 234, 234));
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 0 10px;
+    &:before {
+      font-size: 20px;
+      display: inline;
+    }
+  }
+  .col-lg-3 {
+    max-width: 30%!important;
+    padding-right: 1.5%!important;
+    padding-left: 1.5%!important;
+    .btn-toolbar {
+      position: relative;
+      .btn-primary {
+        display: inline-block;
+        width: 50%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+      .btn-default {
+        display: inline-block;
+        width: 50%;
+        margin-left: 0%;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+    }
+  }
+}
+
+// Editor
+.editor .fold-marker:after {
+  font-size: 150%!important;
+  background: none!important;
+  line-height: 1em!important;
+  display: inline-block!important;
+  position: absolute;
+}
+.editor.mini {
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px dotted gray;
+}
+
+// Tool Panel
+@-webkit-keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+    }
+}
+.tool-panel {
+  position: relative;
+  background: @tab-background-color-active;
+  -webkit-animation: fadeInUp 0.15s ease-in-out;
+}
+
+// Overlay
+.overlay {
+  color: @text-color;
+  background-color: @overlay-background-color;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  -webkit-animation: fadeInUp 0.15s ease-in-out;
+
+  .editor.mini {
+    margin-bottom: @component-padding;
+  }
+
+  .select-list ol.list-group,
+  &.select-list ol.list-group {
+    background-color: @inset-panel-background-color;
+
+    li {
+      &.selected {
+        background-color: @text-color-info;
+        color: white;
+        .secondary-line {
+          color: white;
+        }
+      }
+
+      .status.icon {
+        float: right;
+        margin-left: @component-icon-padding;
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+
+  }
+}
+
+// Footer
+.status-bar-left {
+  //.icon.text-error {
+  //  background: #cc0000;
+  //  color: white;
+  //  line-height: 14px;
+  //  height: 14px;
+  //  width: 14px;
+  //  text-align: center;
+  //  vertical-align: middle;
+  //  border-radius: 4px;
+  //  &:before {
+  //    font-size: 10px;
+  //  }
+  //}
+}
+.theme-description:after {
+  color: @text-color-error;
+  // content: '.\nAlso, thanks for selecting my theme!\nIf you run into any problems or would like to provide feedback, start an issue at http://github.com/lablayers/astronomical.\n\nCreated with <3 by Victor Lourng in Philadelphia.'
+}
