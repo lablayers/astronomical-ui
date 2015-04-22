@@ -233,14 +233,14 @@ select {
 }
 
 // Editor
-.editor .fold-marker:after {
+.atom-text-editor .fold-marker:after {
   font-size: 150%!important;
   background: none!important;
   line-height: 1em!important;
   display: inline-block!important;
   position: absolute;
 }
-.editor.mini {
+.atom-text-editor[mini] {
   background: none;
   box-shadow: none;
   border: none;
@@ -258,20 +258,20 @@ select {
       -webkit-transform: translateY(0);
     }
 }
-.tool-panel {
+.atom-panel {
   position: relative;
   background: @tab-background-color-active;
   -webkit-animation: fadeInUp 0.15s ease-in-out;
 }
 
 // Overlay
-.overlay {
+.atom-panel.modal {
   color: @text-color;
   background-color: @overlay-background-color;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
   -webkit-animation: fadeInUp 0.15s ease-in-out;
 
-  .editor.mini {
+  .atom-text-editor[mini] {
     margin-bottom: @component-padding;
   }
 
